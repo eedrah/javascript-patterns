@@ -12,7 +12,7 @@ var cookMeal = function (food) {
 
 var iMethods = [];
 
-var Boil = (function () {
+(function () {
     var foods = [
         'egg',
         'potato'
@@ -31,7 +31,7 @@ var Boil = (function () {
     return exported;
 }());
 
-var Toast = (function () {
+(function () {
     var foods = [
         'bread',
         'hashbrown'
@@ -49,7 +49,8 @@ var Toast = (function () {
     iMethods.push(exported);
     return exported;
 }());
-var Raw = (function () {
+
+(function () {
     var badFoods = [
         'egg',
         'potato',
