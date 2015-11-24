@@ -1,19 +1,16 @@
 /* eslint no-console:0 */
 
 var cookMeal = function (food) {
-    var methods = [
-        Boil,
-        Toast,
-        Raw
-    ];
     var chosenMethod;
-    methods.forEach(function (method) {
+    iMethods.forEach(function (method) {
         if (method.canCook(food)) {
             chosenMethod = method;
         }
     });
     chosenMethod.cook(food);
 };
+
+var iMethods = [];
 
 var Boil = (function () {
     var foods = [
@@ -26,11 +23,14 @@ var Boil = (function () {
     var canCook = function (food) {
         return (foods.indexOf(food) >= 0);
     };
-    return {
+    var exported = {
         cook: cook,
         canCook: canCook
     };
+    iMethods.push(exported);
+    return exported;
 }());
+
 var Toast = (function () {
     var foods = [
         'bread',
@@ -42,16 +42,17 @@ var Toast = (function () {
     var canCook = function (food) {
         return (foods.indexOf(food) >= 0);
     };
-    return {
+    var exported = {
         cook: cook,
         canCook: canCook
     };
+    iMethods.push(exported);
+    return exported;
 }());
 var Raw = (function () {
     var badFoods = [
         'egg',
         'potato',
-        'bread',
         'hashbrown'
     ];
     var cook = function (food) {
@@ -60,10 +61,12 @@ var Raw = (function () {
     var canCook = function (food) {
         return (badFoods.indexOf(food) == -1);
     };
-    return {
+    var exported = {
         cook: cook,
         canCook: canCook
     };
+    iMethods.push(exported);
+    return exported;
 }());
 
 cookMeal('egg');
